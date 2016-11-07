@@ -30,6 +30,15 @@ namespace Swashbuckle.OData.Descriptions
 
             var routes = new List<SwaggerRoute>();
 
+            // Return empty list if route constraint is not the correct type
+            // Further logic requires the constraint to be defined
+            if (false == oDataRoute.Constraints.Values
+                .Any(value => value is ODataPathRouteConstraint)
+               )
+            {
+                return routes;
+            }
+
             routes.AddRangeIfNotNull(GenerateEntitySetRoutes(oDataRoute));
             routes.AddRangeIfNotNull(GenerateEntityRoutes(oDataRoute));
             routes.AddRangeIfNotNull(GenerateOperationImportRoutes(oDataRoute));

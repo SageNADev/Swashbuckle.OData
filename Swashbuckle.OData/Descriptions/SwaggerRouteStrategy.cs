@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Http.Routing;
 using System.Web.OData.Extensions;
 using System.Web.OData.Formatter;
 using System.Web.OData.Routing;
@@ -86,7 +87,12 @@ namespace Swashbuckle.OData.Descriptions
 
             Contract.Assume(potentialSwaggerRoute.ODataRoute.Constraints != null);
 
-            var oDataAbsoluteUri = potentialOperation.GenerateSampleODataUri(ServiceRoot, potentialSwaggerRoute.PrefixedTemplate);
+            var oDataAbsoluteUri = potentialOperation
+                                    .GenerateSampleODataUri(
+                                        ServiceRoot, 
+                                        potentialSwaggerRoute.PrefixedTemplate,
+                                        potentialSwaggerRoute.ODataRoute
+                                    );
 
             var httpRequestMessage = new HttpRequestMessage(httpMethod, oDataAbsoluteUri);
 
@@ -94,7 +100,8 @@ namespace Swashbuckle.OData.Descriptions
 
             var requestContext = new HttpRequestContext
             {
-                Configuration = httpConfig
+                Configuration = httpConfig,
+                Url = new UrlHelper(httpRequestMessage)
             };
             httpRequestMessage.SetConfiguration(httpConfig);
             httpRequestMessage.SetRequestContext(requestContext);
@@ -163,7 +170,11 @@ namespace Swashbuckle.OData.Descriptions
 
             Contract.Assume(oDataPathRouteConstraint.PathHandler != null);
 
-            var odataPath = operation.GenerateSampleODataUri(ServiceRoot, swaggerRoute.Template).Replace(ServiceRoot, string.Empty);
+            var odataPath = operation.GenerateSampleODataUri(
+                                    ServiceRoot, 
+                                    swaggerRoute.Template,
+                                    swaggerRoute.ODataRoute)
+                                .Replace(ServiceRoot, string.Empty);
 
             var result = oDataPathRouteConstraint.PathHandler.Parse(model, ServiceRoot, odataPath);
             Contract.Assume(result != null);
