@@ -55,6 +55,14 @@
       <HintPath>..\packages\Flurl.1.1.2\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10\Flurl.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.OData.Versioning, Version=2.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.OData.Versioning.2.0.1\lib\net45\Microsoft.AspNet.OData.Versioning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.WebApi.Versioning, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Versioning.2.0.0\lib\net45\Microsoft.AspNet.WebApi.Versioning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.OData.Core, Version=6.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.OData.Core.6.15.0\lib\portable-net45+win+wpa81\Microsoft.OData.Core.dll</HintPath>
       <Private>True</Private>
@@ -168,6 +176,7 @@
     <Compile Include="Fixtures\SchemaTests.cs" />
     <Compile Include="Fixtures\ResponseModelTests.cs" />
     <Compile Include="Fixtures\ParameterKeyTests.cs" />
+    <Compile Include="Fixtures\VersionedODataTests.cs" />
     <Compile Include="Fixtures\StringTypeUrlParamTests.cs" />
     <Compile Include="HttpClientUtils.cs" />
     <Compile Include="Fixtures\GetTests.cs" />
