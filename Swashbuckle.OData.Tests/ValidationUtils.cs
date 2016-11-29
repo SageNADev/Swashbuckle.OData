@@ -13,13 +13,13 @@ namespace Swashbuckle.OData.Tests
 {
     public static class ValidationUtils
     {
-        public static async Task ValidateSwaggerJson()
+        public static async Task ValidateSwaggerJson(string swaggerUrl = "swagger/docs/v1")
         {
             // Arrange
             var httpClient = HttpClientUtils.GetHttpClient(HttpClientUtils.BaseAddress);
 
             // Act
-            var response = await httpClient.GetAsync("swagger/docs/v1");
+            var response = await httpClient.GetAsync(swaggerUrl);
 
             // Assert
             await response.ValidateSuccessAsync();
