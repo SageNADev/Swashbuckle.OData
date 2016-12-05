@@ -28,6 +28,15 @@ namespace Swashbuckle.OData.Descriptions
             Contract.Requires(oDataRoute != null);
             Contract.Requires(oDataRoute.Constraints != null);
 
+            // Return empty list if route constraint is not the correct type
+            // Further logic requires the constraint to be defined 
+            if (false == oDataRoute.Constraints.Values
+                .Any(value => value is ODataPathRouteConstraint)
+               )
+            {
+                return new List<ODataActionDescriptor>();
+            }
+
             var attributeRoutingConvention = (AttributeRoutingConvention)oDataRoute
                 .GetODataPathRouteConstraint()
                 .RoutingConventions?
