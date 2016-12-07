@@ -224,6 +224,10 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <CodeContractsInstallDir Condition="'$(CodeContractsInstallDir)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\packages\DotNet.Contracts.1.10.20606.1\'))</CodeContractsInstallDir>
+  </PropertyGroup>
+  <Import Condition="'$(CodeContractsImported)' != 'true' AND '$(DontImportCodeContracts)' != 'true'" Project="$(CodeContractsInstallDir)\MsBuild\v$(VisualStudioVersion)\Microsoft.CodeContracts.targets"/>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
