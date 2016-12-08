@@ -130,8 +130,8 @@
       <HintPath>..\packages\Microsoft.AspNet.OData.Versioning.2.0.1\lib\net45\Microsoft.AspNet.OData.Versioning.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AspNet.WebApi.Versioning, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Versioning.2.0.0\lib\net45\Microsoft.AspNet.WebApi.Versioning.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.WebApi.Versioning, Version=2.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Versioning.2.0.2\lib\net45\Microsoft.AspNet.WebApi.Versioning.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.OData.Core, Version=6.15.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -249,7 +249,7 @@
   <PropertyGroup>
     <CodeContractsInstallDir Condition="'$(CodeContractsInstallDir)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\packages\DotNet.Contracts.1.10.20606.1\'))</CodeContractsInstallDir>
   </PropertyGroup>
-  <Import Condition="'$(CodeContractsImported)' != 'true' AND '$(DontImportCodeContracts)' != 'true'" Project="$(CodeContractsInstallDir)\MsBuild\v$(VisualStudioVersion)\Microsoft.CodeContracts.targets"/>
+  <Import Condition="'$(CodeContractsImported)' != 'true' AND '$(DontImportCodeContracts)' != 'true'" Project="$(CodeContractsInstallDir)\MsBuild\v$(VisualStudioVersion)\Microsoft.CodeContracts.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
