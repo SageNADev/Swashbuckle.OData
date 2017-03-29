@@ -1,0 +1,1 @@
+.\tools\NuProj.0.10.4-beta-gf7fc34e7d8\tools\NuGet.exe restore Swashbuckle.OData.sln
